@@ -1,0 +1,92 @@
+<div class="card">
+    <mat-card>
+        <mat-card-title>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+            &nbsp; Currency Search
+        </mat-card-title>
+        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="50">
+                <mat-card-content>
+                    <form [formGroup]="searchForm">
+                        <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Conversion Key</mat-label>
+                                    <input matInput #conversionKey formControlName="conversionKey" placeholder="INR">
+                                    <button mat-icon-button matSuffix (click)="conversionkeysearch(conversionKey.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Conversion Name</mat-label>
+                                    <input matInput #conversionName formControlName="conversionName" placeholder="USD">
+                                    <button mat-icon-button matSuffix (click)="conversionnamesearch(conversionName.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Conversion Factor</mat-label>
+                                    <input matInput #conversionFactor formControlName="conversionFactor" placeholder="USD">
+                                    <button mat-icon-button matSuffix (click)="conversionfactorsearch(conversionFactor.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Created By</mat-label>
+                                    <input matInput #createdBy formControlName="createdBy" placeholder="USD">
+                                    <button mat-icon-button matSuffix (click)="createdbysearch(createdBy.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </form>
+                </mat-card-content>
+            </div>
+            <div fxFlex="10">
+                <div fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="currencyConversion()">Add Currency
+                            Conversion</button>
+                    </mat-card-actions>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="roundingOff()">Add rounding off</button>
+                    </mat-card-actions>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="calculate()">Calculate</button>
+                    </mat-card-actions>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="clearData()">Clear</button>
+                    </mat-card-actions>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="currencySearch(searchForm.value)">Search</button>
+                    </mat-card-actions>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Saved Search</mat-label>
+                            <select matNativeControl (change)="update($event)" required>
+                                <option></option>
+                                <option *ngFor="let i of data" [value]="i">{{i}}</option>
+                            </select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div class="table">
+
+    <router-outlet></router-outlet>
+
+</div>

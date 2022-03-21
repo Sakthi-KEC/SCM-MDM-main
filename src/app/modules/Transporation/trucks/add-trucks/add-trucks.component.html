@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">library_add</mat-icon>
+    &nbsp; Add Trucks
+</h2>
+
+<br>
+
+<mat-dialog-content>
+    <form [formGroup]="addTrucksForm">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Truck Code</mat-label>
+                    <input matInput #truckCode formControlName="truckCode" placeholder="TO000987" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <input matInput #truckCountry formControlName="truckCountry" placeholder="India" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Origin</mat-label>
+                    <input matInput #truckOrigin formControlName="truckOrigin" placeholder="Bangalore" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Destination</mat-label>
+                    <input matInput #truckDestination formControlName="truckDestination" placeholder="Chennai" required>
+                </mat-form-field>
+            </div><br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Capacity</mat-label>
+                    <input matInput #truckCapacity formControlName="truckCapacity" placeholder="2" required>
+                </mat-form-field>
+            </div><br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Vendor</mat-label>
+                    <input matInput #truckVendor formControlName="truckVendor" placeholder="APR Trucks" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Cost</mat-label>
+                    <input matInput #cost formControlName="cost" placeholder="2500" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Created By</mat-label>
+                    <input matInput #CreatedBy formControlName="createdBy" placeholder="ABH190" required>
+                </mat-form-field>
+            </div>
+            <br>
+
+            <div>
+                <mat-form-field class="date" appearance="fill">
+                    <mat-label>Created Date</mat-label>
+                    <input #ExpiryDate formControlName="createdDate" matInput [matDatepicker]="picker" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-slide-toggle color="primary" formControlName="status">Active</mat-slide-toggle>
+
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<br>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="addSuccess(addTrucksForm.value)" [disabled]="!addTrucksForm.valid">Add</button>
+</mat-dialog-actions>

@@ -1,0 +1,14 @@
+    mat-toolbar {
+        background: #004fab;
+        color: white;
+    }
+    
+    .help {
+        cursor: help;
+    }
+    
+    img {
+        margin-top: 10px;
+        width: 300px;
+        height: 130px;
+    }

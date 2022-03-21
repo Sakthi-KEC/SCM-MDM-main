@@ -1,0 +1,99 @@
+table {
+    width: 100%;
+    margin: auto;
+}
+
+.btn-edit {
+    text-align: right;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.Export {
+    float: right;
+    padding-right: 100px;
+}
+
+.Add-new {
+    float: right;
+    padding-right: 80px;
+}
+
+.save-search {
+    float: right;
+    padding-right: 80px;
+}
+
+th {
+    background: #5da1ee;
+    font-size: medium;
+    color: black;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.close-table {
+    float: right;
+    padding-right: 80px;
+}
+
+td {
+    background: #c1deff;
+    height: 55px;
+    width: 500px;
+    font-size: medium;
+}
+
+mat-table {
+    width: 100px;
+}
+
+input,
+mat-form-field {
+    width: 120px !important;
+}
+
+.datepicker {
+    width: 150px !important;
+}
+
+.mat-row {
+    height: auto;
+}
+
+.mat-cell {
+    padding: 8px 8px 8px 0;
+}
+
+.btn-edit {
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.example-container {
+    height: 400px;
+    width: 80%;
+    overflow: auto;
+    margin: auto;
+}
+
+.filter {
+    margin-left: 200px;
+}
+
+.header {
+    text-align: center;
+    margin: 5px;
+    padding: 10px;
+}
+
+.spacing {
+    padding: 10px;
+}

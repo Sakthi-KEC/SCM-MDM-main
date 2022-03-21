@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">library_add</mat-icon>
+    &nbsp; Calculate
+</h2>
+
+<br>
+
+<mat-dialog-content>
+    <form [formGroup]="calculateForm">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Currency Count</mat-label>
+                    <input matInput formControlName="currencyCount" placeholder=40>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Conversion Name</mat-label>
+                    <select matNativeControl (change)="update($event)" required>
+                        <option></option>
+                        <option *ngFor="let i of data" [value]="i">{{i}}</option>
+                    </select>
+                    <!-- <input matInput formControlName="conversionKey" placeholder="INR" required> -->
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Conversion Factor</mat-label>
+                    <input matInput value={{factor}} formControlName="fromCurrency" placeholder=73>
+
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Rounding off Value</mat-label>
+                    <select matNativeControl (change)="update1($event)">
+                        <option></option>
+                        <option *ngFor="let i of data1" [value]="i">{{i}}</option>
+                    </select>
+                    <!-- <input matInput formControlName="conversionKey" placeholder="INR" required> -->
+                </mat-form-field>
+            </div>
+            <br>
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<br>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="addSuccess(calculateForm.value)" [disabled]="!calculateForm.valid">Calculate</button>
+</mat-dialog-actions>

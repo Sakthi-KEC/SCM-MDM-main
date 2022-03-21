@@ -1,0 +1,42 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+mat-drawer-container {
+    height: 100%;
+}
+
+mat-drawer-content {
+    padding: 20px;
+}
+
+mat-drawer {
+    margin: 16px;
+    width: 300px;
+    border-right: none;
+    background: #c1deff;
+    color: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+    margin-right: 8px;
+}
+
+img {
+    background-size: cover;
+    width: 100%;
+}

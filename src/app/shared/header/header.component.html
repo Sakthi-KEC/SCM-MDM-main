@@ -1,0 +1,27 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <button mat-icon-button class="menu" aria-label="menu" (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button> &nbsp;&nbsp;
+        <div fxFlex></div>
+        <div class="title" fxFlex fxLayout="row" fxLayoutAlign="center">Master Data Management</div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="20px">
+            <button mat-icon-button aria-label="settings">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <button class="help" aria-label="help" mat-icon-button>
+                <mat-icon>help_outline</mat-icon>
+            </button>
+            <button mat-button aria-label="profile" [matMenuTriggerFor]="menu">
+                <mat-icon>person_outline</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item aria-label="exit"> 
+                    <mat-icon>exit_to_app</mat-icon>
+                   Sign out
+                </button>
+            </mat-menu>
+        </div>
+
+    </mat-toolbar-row>
+</mat-toolbar>

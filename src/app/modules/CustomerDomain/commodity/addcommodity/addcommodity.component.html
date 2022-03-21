@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">library_add</mat-icon>
+    &nbsp; Add Commodity Group
+</h2>
+
+<br>
+
+<mat-dialog-content>
+    <form [formGroup]="addCommodityForm">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Commodity Group Code</mat-label>
+                    <input #commodityGroupCode matInput formControlName="commodityGroupCode" placeholder="Shoes - V1">
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Commodity Group Name</mat-label>
+                    <input #commodityGroupName matInput formControlName="commodityGroupName" placeholder="Sport Shoes"
+                        required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Created By</mat-label>
+                    <input #createdBy matInput formControlName="createdBy" placeholder="PRK042" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div>
+                <mat-form-field class="date" appearance="fill">
+                    <mat-label>Created Date</mat-label>
+                    <input #createdDate formControlName="createdDate" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<br>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true"
+        (click)="addSuccess(commodityGroupCode.value,commodityGroupName.value,createdBy.value,createdDate.value)"
+        [disabled]="!addCommodityForm.valid">Add</button>
+</mat-dialog-actions>

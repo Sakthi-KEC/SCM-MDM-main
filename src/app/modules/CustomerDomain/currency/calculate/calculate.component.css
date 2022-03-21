@@ -1,0 +1,19 @@
+.mat-icon {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.card {
+    width: 75%;
+    margin-left: 20px;
+    margin: 20px;
+}
+
+mat-dialog-content {
+    width: 500px;
+    height: 100%;
+}
+
+.date {
+    width: 200px;
+}

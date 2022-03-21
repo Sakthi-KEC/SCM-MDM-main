@@ -1,0 +1,150 @@
+<div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="card">
+        <mat-card>
+            <mat-card-title>
+                <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                &nbsp; Yards Search
+            </mat-card-title>
+
+            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50">
+                    <mat-card-content>
+                        <form [formGroup]="searchForm">
+                            <div class="border">
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Yards Code</mat-label>
+                                            <input matInput #yardsCode formControlName="yardsCode" placeholder="WA000987">
+                                            <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="input" fxFlex="20">
+                                        <div class="yards-name">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Country</mat-label>
+                                                <input matInput #yardsCountry formControlName="yardsCountry" placeholder="India">
+                                                <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+
+                                    <div class="input" fxFlex="20">
+                                        <div class="yards-group-name">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>City</mat-label>
+                                                <input matInput #yardsCity formControlName="yardsCity" placeholder="Chennai">
+                                                <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="input" fxFlex="20">
+                                        <div class="yards-group-name">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Pin Code</mat-label>
+                                                <input matInput #yardsPincode formControlName="yardsPincode" placeholder="600037">
+                                                <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+
+                                    <div class="input" fxFlex="20">
+                                        <div class="yards-group-name">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Capacity (in TEUs)</mat-label>
+                                                <input matInput #yardsCapacity formControlName="yardsCapacity" placeholder="250000">
+                                                <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="input" fxFlex="20">
+                                        <div class="yards-group-name">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Total Area</mat-label>
+                                                <input matInput #yardsTotalArea formControlName="yardsTotalArea" placeholder="1000000">
+                                                <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Created By</mat-label>
+                                            <input matInput #createdBy formControlName="createdBy" placeholder="Adithya">
+                                            <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field class="date" appearance="outline">
+                                            <mat-label>Select Date</mat-label>
+                                            <input #date formControlName="date" matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <button mat-icon-button matSuffix aria-label="search">
+                                                <mat-icon>search</mat-icon>
+                                            </button>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </div>
+                <div fxFlex="10">
+                    <div fxLayout="column" fxLayoutAlign="space-evenly center">
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="addyards()">Add Yards
+                            </button>
+                        </mat-card-actions>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="clearData()">Clear</button>
+                        </mat-card-actions>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="yardsSearch(searchForm.value)">Search</button>
+                        </mat-card-actions>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Saved Search</mat-label>
+                                <select matNativeControl (change)="update($event)" required>
+                                    <option></option>
+                                    <option *ngFor="let i of data" [value]="i">{{i}}</option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="table">
+        <router-outlet></router-outlet>
+    </div>
+</div>

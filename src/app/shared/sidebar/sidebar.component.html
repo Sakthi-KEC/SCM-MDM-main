@@ -1,0 +1,79 @@
+<div class="expansion">
+
+    <br>
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Transportation
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <button mat-flat-button class="center" (click)="getTrucks()">Trucks</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getShips()">Ships</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getFlights()">Flights</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getTrains()">Trains</button>
+        </mat-expansion-panel>
+        <br>
+
+        <br>
+        <br>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Customer
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <button mat-flat-button class="center" (click)="getCommodity()">Commodity</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getCurrency()">Currency</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getunNumber()">Dangerous Cargo</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getCustomer()">Customer</button>
+        </mat-expansion-panel>
+        <br>
+        <br>
+
+        <br>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Locations
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <button mat-flat-button class="center" (click)="getWarehouse()">Warehouse</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getOffices()">Offices</button>
+            <br>
+            <button mat-flat-button class="center" (click)="getYards()">Yards</button>
+        </mat-expansion-panel>
+        <br>
+
+        <br>
+        <br>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Operational Rules
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
+        <br>
+
+        <br>
+        <br>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Admin
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
+        <br>
+    </mat-accordion>
+</div>

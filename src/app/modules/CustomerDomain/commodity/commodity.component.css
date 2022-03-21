@@ -1,0 +1,28 @@
+.mat-icon {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.card {
+    width: 98%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.table {
+    width: 98%;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+button {
+    width: 200px;
+}
+
+.date {
+    width: 230px;
+}
+
+.border{
+    margin-right: 80px;
+}

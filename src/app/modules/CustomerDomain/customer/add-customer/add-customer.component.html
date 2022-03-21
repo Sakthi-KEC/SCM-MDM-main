@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">library_add</mat-icon>
+    &nbsp; Add Customer</h2>
+<br>
+<mat-dialog-content>
+    <form [formGroup]="addcustomerForm">
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Customer Code</mat-label>
+                    <input matInput #customerCode formControlName="customerCode" placeholder="C00987" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Customer Name</mat-label>
+                    <input matInput #customerName formControlName="customerName" placeholder="Nike" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Customer Domain</mat-label>
+                    <input matInput #customerDomain formControlName="customerDomain" placeholder="Shoes" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div>
+                <mat-form-field class="date" appearance="fill">
+                    <mat-label>Contract Start Date</mat-label>
+                    <input #contractStartDate formControlName="contractStartDate" matInput [matDatepicker]="picker" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <br>
+            <div>
+                <mat-form-field class="date" appearance="fill">
+                    <mat-label>Contract End Date</mat-label>
+                    <input #contractEndDate formControlName="contractEndDate" matInput [matDatepicker]="picker1" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Created By</mat-label>
+                    <input matInput #CreatedBy formControlName="createdBy" placeholder="Adithya" required>
+                </mat-form-field>
+            </div>
+            <br>
+            <div>
+                <mat-form-field class="date" appearance="fill">
+                    <mat-label>Created Date</mat-label>
+                    <input #ExpiryDate formControlName="createdDate" matInput [matDatepicker]="picker2" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-slide-toggle color="primary" formControlName="status">Active</mat-slide-toggle>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<br>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="addSuccess(addcustomerForm.value)" [disabled]="!addcustomerForm.valid">Add</button>
+</mat-dialog-actions>

@@ -1,0 +1,82 @@
+<mat-card>
+    <mat-card-title>
+        <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">table_view</mat-icon>
+        &nbsp; Ships Table
+    </mat-card-title>
+    <div>
+        <span class="close-table"><button mat-raised-button color="primary" (click)="closeTable()">X</button></span>
+        <span class="Export">
+            <mat-menu #appMenu="matMenu">
+                <button mat-menu-item
+                    (click)="exporter.exportTable('xlsx', {fileName:'Commoditydetails'})">Excel</button>
+                <button mat-menu-item
+                    (click)="exporter.exportTable('json', {fileName:'Commoditydetails'})">Json</button>
+                <button mat-menu-item (click)="exporter.exportTable('txt', {fileName:'Commoditydetails'})">Text</button>
+            </mat-menu>
+            <button matTooltip="Export" matTooltipPosition="after" mat-mini-fab color="primary"
+                [matMenuTriggerFor]="appMenu">
+                <mat-icon>file_download</mat-icon>
+            </button>
+        </span>
+    </div>
+    <br>
+    <br>
+    <pre></pre>
+    <div class="filter">
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput placeholder="Ex.E1013" (keyup)="applyfilter($event)">
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <table mat-table matTableExporter [dataSource]="dataSource" class="mat-elevation-z8" matSort #exporter="matTableExporter" class="table">
+            <ng-container [matColumnDef]="col" *ngFor="let col of columns">
+                <th mat-header-cell *matHeaderCellDef>
+                    <span *ngIf="col !== 'edit' && col !== 'save'" class="header" mat-sort-header>{{col}}</span>
+                </th>
+                <div>
+                    <td mat-cell *matCellDef="let element" [ngClass]="{'vertical': col !== 'save'}">
+                        <div *ngIf="!element.isEdit" [ngClass]="{'space': col === 'save'}">
+                            <div class="btn-edit" *ngIf="col === 'edit'; spanHeader">
+                                <mat-icon (click)="element.isEdit = !element.isEdit" (click)="oldData(element)">edit_outline
+                                </mat-icon>
+                            </div>
+                            <span #spanHeader>{{element[col]}}</span>
+                        </div>
+                        <div *ngIf="element.saved === false">
+                            <div class="btn-edit" *ngIf="col === 'save'">
+                                <mat-icon class="spacing" (click)="element.isSave = !element.isSave" (click)="saveData(element)"> bookmark_border</mat-icon>
+                            </div>
+                        </div>
+                        <div *ngIf="element.saved === true">
+                            <div class="btn-edit" *ngIf="col === 'save'">
+                                <mat-icon class="spacing" (click)="element.isSave = element.isSave" (click)="unsaveData(element)">bookmark</mat-icon>
+                            </div>
+                        </div>
+                        <div class="done" [ngSwitch]="dataSchema[col]" *ngIf="element.isEdit">
+                            <div class="btn-edit" *ngSwitchCase="'edit'">
+                                <mat-icon class="spacing" (click)="element.isEdit = !element.isEdit" (click)="newData(element)">check_circle_outline</mat-icon>
+                                <mat-icon class="spacing" (click)="element.isEdit = !element.isEdit" onClick="window.location.reload()">clear</mat-icon>
+                            </div>
+                            <mat-form-field *ngSwitchCase="'date'" appearance="fill">
+                                <input matInput [matDatepicker]="picker" [(ngModel)]="element[col]">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <mat-form-field *ngSwitchCase="'text'" appearance="fill">
+                                <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col] ">
+                            </mat-form-field>
+                            <mat-form-field *ngSwitchCase="'conversionkey'" appearance="fill">
+                                <input matInput [(ngModel)]="element[col]" placeholder={{element[col]}} disabled>
+                            </mat-form-field>
+                        </div>
+                    </td>
+                </div>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columns;matHeaderRowDefSticky"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </table>
+    </div>
+    <mat-paginator [length]="posts.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+</mat-card>

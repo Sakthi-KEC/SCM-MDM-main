@@ -1,0 +1,105 @@
+<div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="card">
+        <mat-card>
+            <mat-card-title>
+                <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                &nbsp; UN Group search
+            </mat-card-title>
+            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50">
+                    <mat-card-content>
+                        <form [formGroup]="searchForm">
+                            <div class="border">
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>UN Group Code</mat-label>
+                                            <input matInput #unGroupCode formControlName="unGroupCode" placeholder="CO000987">
+                                            <button mat-icon-button matSuffix (click)="ungroupCodeSearch(unGroupCode.value)">
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>UN Name</mat-label>
+                                            <input matInput #unName formControlName="unName" placeholder="Liquor">
+                                            <button mat-icon-button matSuffix (click)="unNameSearch(unName.value)">
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>UN Number</mat-label>
+                                            <input matInput #unNumber formControlName="unNumber" placeholder="C56">
+                                            <button mat-icon-button matSuffix>
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Created By</mat-label>
+                                            <input matInput #createdBy formControlName="createdBy" placeholder="DRA237">
+                                            <button mat-icon-button matSuffix (click)="createdbysearch(createdBy.value)">
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                                    <div class="input" fxFlex="20">
+                                        <mat-form-field class="date" appearance="outline">
+                                            <mat-label>Select Date</mat-label>
+                                            <input #date formControlName="date" matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <button mat-icon-button matSuffix (click)="datesearch(date.value)">
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </div>
+                <div fxFlex="10">
+                    <div fxLayout="column" fxLayoutAlign="space-evenly center">
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="addunGroup()">Add UN Group</button>
+                        </mat-card-actions>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="addunNumber()">Add UN Number</button>
+                        </mat-card-actions>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="clearData()">Clear</button>
+                        </mat-card-actions>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="unGroupSearch(searchForm.value)">Search</button>
+                        </mat-card-actions>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Saved Search</mat-label>
+                                <select matNativeControl (change)="update($event)" required>
+                                    <option></option>
+                                    <option *ngFor="let i of data" [value]="i">{{i}}</option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="table">
+
+        <router-outlet></router-outlet>
+
+    </div>
+</div>

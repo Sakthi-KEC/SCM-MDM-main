@@ -1,0 +1,125 @@
+<div class="card">
+    <mat-card>
+        <mat-card-title>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+            &nbsp; Trains Search
+        </mat-card-title>
+        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="50">
+                <mat-card-content>
+                    <form [formGroup]="searchForm">
+                        <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Trains Code</mat-label>
+                                    <input matInput #trainsCode formControlName="trainsCode" placeholder="TIN0078">
+                                    <button mat-icon-button matSuffix (click)="trainsCodesearch(trainsCode.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Country</mat-label>
+                                    <input matInput #trainsCountry formControlName="trainsCountry" placeholder="India">
+                                    <button mat-icon-button matSuffix (click)="trainsCountrysearch(trainsCountry.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Origin</mat-label>
+                                    <input matInput #trainsOrigin formControlName="trainsOrigin" placeholder="Bangalore">
+                                    <button mat-icon-button matSuffix (click)="trainsOriginsearch(trainsOrigin.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Destination</mat-label>
+                                    <input matInput #trainsDestination formControlName="trainsDestination" placeholder="Chennai">
+                                    <button mat-icon-button matSuffix (click)="trainsDestinationsearch(trainsDestination.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Capacity</mat-label>
+                                    <input matInput #trainsCapacity formControlName="trainsCapacity" placeholder="2">
+                                    <button mat-icon-button matSuffix (click)="trainsCapacitysearch(trainsCapacity.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Vendor</mat-label>
+                                    <input matInput #trainsVendor formControlName="trainsVendor" placeholder="APR trains">
+                                    <button mat-icon-button matSuffix (click)="trainsVendorsearch(trainsVendor.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Cost</mat-label>
+                                    <input matInput #cost formControlName="cost" placeholder="250">
+                                    <button mat-icon-button matSuffix (click)="costsearch(cost.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="input">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Created By</mat-label>
+                                    <input matInput #createdBy formControlName="createdBy" placeholder="ABH190">
+                                    <button mat-icon-button matSuffix (click)="createdbysearch(createdBy.value)">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </form>
+                </mat-card-content>
+            </div>
+            <div fxFlex="10">
+                <div fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)=" addtrains()">Add New Trains</button>
+                    </mat-card-actions>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="clearData()">Clear</button>
+                    </mat-card-actions>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="trainsSearch(searchForm.value)">Search</button>
+                    </mat-card-actions>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Saved Search</mat-label>
+                            <select matNativeControl (change)="update($event)" required>
+                                <option></option>
+                                <option *ngFor="let i of data" [value]="i">{{i}}</option>
+                            </select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div class="table">
+
+    <router-outlet></router-outlet>
+
+</div>
